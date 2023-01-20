@@ -13,11 +13,12 @@ export default class WeatherHeader {
 
   async getWeatherData() {
     const data = await getData();
+    console.log("weatherHeader", data);
     this.showDetails(data);
   }
 
   showDetails(data) {
-    console.log(data);
+    // console.log(data);
     const city = data.city;
     this.cityElem.innerText = city.name;
     this.showCurrentDate();

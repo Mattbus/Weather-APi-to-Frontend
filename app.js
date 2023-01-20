@@ -9,7 +9,6 @@ const weatherHeader = new WeatherHeader(
   document.querySelector("#header__date")
 );
 weatherHeader.init();
-weatherHeader.showDetails();
 
 const weatherList = new WeatherList(document.querySelector("#weather__list"));
 weatherList.init();

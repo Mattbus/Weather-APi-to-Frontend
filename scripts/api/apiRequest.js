@@ -18,7 +18,6 @@ const sendApiRequest = (method, url) => {
 
 export async function getData() {
   const key = auth();
-  console.log(key);
 
   return sendApiRequest(
     "GET",
