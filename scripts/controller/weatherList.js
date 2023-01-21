@@ -23,46 +23,65 @@ export default class weatherList {
       let prop = dateStr.split(" ");
       if (prop[0] === newprop) {
         newprop = prop[0];
-        console.log("gleich");
       } else if (newprop === "") {
         newprop = prop[0];
-        console.log("leer");
       } else {
-        const linkElement = document.createElement("div");
-        linkElement.setAttribute("id", "day__weather");
-        linkElement.setAttribute("date", prop[0]);
-        linkElement.classList.add("container");
-        linkElement.classList.add("dayweather");
-        this.weatherList.append(linkElement);
+        const dayTitle = document.createElement("h3");
+        dayTitle.classList.add("day-title");
+        dayTitle.innerText = prop[0];
+        const dayElement = document.createElement("div");
+        dayElement.setAttribute("id", "day__weather");
+        dayElement.setAttribute("date", prop[0]);
+        dayElement.classList.add("container");
+        dayElement.classList.add("dayweather");
+        this.weatherList.append(dayTitle);
+        this.weatherList.append(dayElement);
+        this.setDayWeatherElem(list, dayElement);
         newprop = prop[0];
       }
     }
   }
+  setDayWeatherElem(list, dayElement) {
+    const elem = dayElement;
+    const day = dayElement.getAttribute("date");
+
+    for (const obj of list) {
+      let dateStr_ = obj.dt_txt;
+      let prop_ = dateStr_.split(" ");
+      if (prop_[0] == day) {
+        console.log(obj);
+
+        const detailElem = document.createElement("div");
+
+        detailElem.classList.add("weather-detail");
+        detailElem.classList.add("container");
+        detailElem.setAttribute("id", prop_[1]);
+        const timeElem = document.createElement("div");
+        timeElem.classList.add("time");
+        timeElem.setAttribute("id", "time_" + prop_[1]);
+        const timeTextElem = document.createElement("p");
+        timeTextElem.innerText = prop_[1];
+        timeElem.append(timeTextElem);
+        detailElem.append(timeElem);
+
+        const stateElem = document.createElement("div");
+        stateElem.classList.add("state");
+        stateElem.setAttribute("id", "state_" + prop_[1]);
+        const stateTextElem = document.createElement("p");
+        stateTextElem.innerText = obj.weather[0].description;
+        stateElem.append(stateTextElem);
+        detailElem.append(stateElem);
+
+        const tempElem = document.createElement("div");
+        tempElem.classList.add("state");
+        tempElem.setAttribute("id", "state_" + prop_[1]);
+        const tempTextElem = document.createElement("p");
+        tempTextElem.innerText = obj.main.feels_like - 273;
+        tempElem.append(tempTextElem);
+        detailElem.append(tempElem);
+        elem.append(detailElem);
+      } else {
+      }
+    }
+  }
 }
-
-//für jedes Objekt, Zerlege obj.dt_text in betandteile.
-//
-//wenn dt_text ===
-
-// splitMassage() {
-//   const message = this.lastAlarm.message;
-
-//   const obj = {};
-
-//   var properties = message.split(";\r\n");
-//   properties.forEach(function (property) {
-//     var tup = property.split(":");
-//     obj[tup[0]] = tup[1];
-//   });
-//   this.messageObj = obj;
-
-//   this.output();
-// }
-
-// const linkElement = document.createElement("div");
-//         linkElement.id.add = "day__weather";
-//         linkElement.classList.add("container");
-//         linkElement.classList.add("dayweather");
-//         linkElement.innerText = result["description"];
-//         console.log(linkElement);
-// this.resultElement.append(linkElement);

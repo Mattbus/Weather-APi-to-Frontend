@@ -13,7 +13,7 @@ export default class WeatherHeader {
 
   async getWeatherData() {
     const data = await getData();
-    console.log("weatherHeader", data);
+    // console.log("weatherHeader", data);
     this.showDetails(data);
   }
 
