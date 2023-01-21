@@ -2,34 +2,37 @@ body {
   padding: 50px;
 }
 
+$color1: #248cc9;
+$text-color: white;
+
 .weatherheader {
-  background-color: #248cc9;
-  color: white;
+  background-color: $color1;
+  color: $text-color;
   padding: 15px;
   border-radius: 5px;
   display: flex;
   justify-content: space-around;
 }
-
 .day-title {
   margin-top: 30px;
 }
-
 .dayweather {
-  background-color: #248cc9;
-  color: white;
+  background-color: $color1;
+
+  color: $text-color;
   display: flex;
   flex-direction: column;
   padding: 10px;
+
   border-radius: 5px;
 }
 
 .weather-detail {
-  color: #248cc9;
+  color: $color1;
   display: flex;
   justify-content: space-between;
   background-color: white;
   margin: 3px;
   padding: 3px 20px;
   border-radius: 3px;
-}/*# sourceMappingURL=index.css.map */
+}
